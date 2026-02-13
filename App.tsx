@@ -100,9 +100,9 @@ const App: React.FC = () => {
       gradient: "from-emerald-500/20 to-emerald-600/10"
     },
     {
-      title: "Video Updates",
+      title: "Updates",
       desc: "புதிய திட்டங்கள் மற்றும் updates பகிர்வு",
-      icon: "🎬",
+      icon: "📈",
       size: "col-span-1 row-span-1",
       gradient: "from-amber-500/20 to-amber-600/10"
     },
@@ -204,7 +204,7 @@ const App: React.FC = () => {
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{
-              backgroundImage: `url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=2000&auto=format&fit=crop')`,
+              backgroundImage: "url(/logo/banner.jpg)",
             }}
           />
           <div className="absolute inset-0 dark-gradient-overlay" />
@@ -250,7 +250,7 @@ const App: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.8 }}
-            className="text-emerald-100/80 text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed font-medium mb-12"
+            className="text-emerald-100/80 text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed font-bold mb-12"
           >
             விவசாயத்தை நேசிக்கும் இதயங்களை ஒன்றிணைக்கும் மிகப்பெரிய டிஜிட்டல் குடும்பம்.
           </motion.p>
@@ -269,7 +269,7 @@ const App: React.FC = () => {
               whileTap={{ scale: 0.98 }}
               className="px-10 py-5 bg-gradient-to-r from-emerald-400 to-emerald-500 text-emerald-950 rounded-2xl font-black text-lg shadow-2xl glow-green-hover border-2 border-emerald-300/50"
             >
-              இப்போதே இணையுங்கள் 
+              இப்போதே இணையுங்கள்
             </motion.a>
             <motion.button
               onClick={handleShare}
@@ -418,8 +418,8 @@ const App: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/95 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-8">
-                  <div className="text-5xl mb-3">🎬</div>
-                  <h4 className="text-3xl font-black text-white mb-2">Video Updates</h4>
+                  <div className="text-5xl mb-3">📈</div>
+                  <h4 className="text-3xl font-black text-white mb-2">Updates</h4>
                 </div>
               </div>
               <div className="p-8">
@@ -606,7 +606,7 @@ const App: React.FC = () => {
             >
               <h5 className="neon-text-gold font-black text-sm uppercase tracking-wider mb-6">யாருக்காக?</h5>
               <ul className="space-y-3 text-base text-emerald-100/80">
-                {['Video Creators', 'Agri Startups', 'Agri Companies' , 'Service Providers' , 'Trainers / Teachers' , ].map((item, i) => (
+                {['Video Creators', 'Agri Startups', 'Agri Companies', 'Service Providers', 'Trainers / Teachers',].map((item, i) => (
                   <motion.li
                     key={i}
                     whileHover={{ x: 8, color: '#10b981' }}
