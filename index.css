@@ -1,0 +1,342 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Premium Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&family=Noto+Sans+Tamil:wght@100..900&display=swap');
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) skewX(12deg);
+  }
+
+  100% {
+    transform: translateX(200%) skewX(12deg);
+  }
+}
+
+@keyframes holographic {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes glow-pulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.3), 0 0 40px rgba(16, 185, 129, 0.1);
+  }
+
+  50% {
+    box-shadow: 0 0 30px rgba(16, 185, 129, 0.5), 0 0 60px rgba(16, 185, 129, 0.2);
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-emerald-950 text-white overflow-x-hidden;
+    font-family: 'Plus Jakarta Sans', 'Noto Sans Tamil', sans-serif;
+    background: linear-gradient(135deg, #064e3b 0%, #022c22 50%, #0a0e0d 100%);
+    background-attachment: fixed;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Outfit', 'Noto Sans Tamil', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+
+  /* Premium Glassmorphism */
+  .glass-morphism {
+    @apply backdrop-blur-2xl bg-white/5 border border-white/10;
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.03) 100%);
+    box-shadow:
+      0 8px 32px 0 rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-morphism-hover {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-morphism-hover:hover {
+    @apply bg-white/10 border-emerald-400/40;
+    box-shadow:
+      0 8px 32px 0 rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.15),
+      0 0 40px rgba(16, 185, 129, 0.3),
+      0 0 80px rgba(16, 185, 129, 0.1);
+    transform: translateY(-4px);
+  }
+
+  /* Glow Effects */
+  .glow-green {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.4), 0 0 40px rgba(16, 185, 129, 0.2);
+  }
+
+  .glow-gold {
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.4), 0 0 40px rgba(245, 158, 11, 0.2);
+  }
+
+  .glow-green-hover:hover {
+    animation: glow-pulse 2s ease-in-out infinite;
+    border-color: rgba(16, 185, 129, 0.6);
+  }
+
+  .glow-gold-hover:hover {
+    box-shadow: 0 0 30px rgba(245, 158, 11, 0.5), 0 0 60px rgba(245, 158, 11, 0.3);
+    border-color: rgba(245, 158, 11, 0.6);
+  }
+
+  /* Holographic Effect */
+  .holographic {
+    background: linear-gradient(135deg,
+        rgba(16, 185, 129, 0.2) 0%,
+        rgba(245, 158, 11, 0.2) 25%,
+        rgba(16, 185, 129, 0.2) 50%,
+        rgba(245, 158, 11, 0.2) 75%,
+        rgba(16, 185, 129, 0.2) 100%);
+    background-size: 200% 200%;
+    animation: holographic 4s ease infinite;
+  }
+
+  .holographic-border {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .holographic-border::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(45deg,
+        transparent 30%,
+        rgba(16, 185, 129, 0.4) 50%,
+        transparent 70%);
+    background-size: 200% 200%;
+    animation: shimmer 3s linear infinite;
+    border-radius: inherit;
+    z-index: -1;
+  }
+
+  /* Dark Gradient Overlay */
+  .dark-gradient-overlay {
+    background: linear-gradient(180deg,
+        rgba(6, 78, 59, 0.95) 0%,
+        rgba(2, 44, 34, 0.85) 50%,
+        rgba(10, 14, 13, 0.95) 100%);
+  }
+
+  /* Premium Text */
+  .premium-text {
+    @apply tracking-tight leading-relaxed;
+    font-feature-settings: "cv02", "cv05", "cv11", "ss01";
+  }
+
+  .neon-text-green {
+    color: #10b981;
+    text-shadow: 0 0 10px rgba(16, 185, 129, 0.5), 0 0 20px rgba(16, 185, 129, 0.3);
+  }
+
+  .neon-text-gold {
+    color: #f59e0b;
+    text-shadow: 0 0 10px rgba(245, 158, 11, 0.5), 0 0 20px rgba(245, 158, 11, 0.3);
+  }
+}
+
+/* Custom Scrollbar - Premium Dark Mode */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-emerald-950/80;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-emerald-600/60 rounded-full;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-emerald-500;
+}
+
+/* ========================================
+   MOBILE APP FEEL - iOS/Android Native Style
+   ======================================== */
+
+@media (max-width: 768px) {
+
+  /* Prevent pull-to-refresh and overscroll */
+  html,
+  body {
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
+    height: 100%;
+  }
+
+  /* Safe area insets for notched devices (iPhone X+, etc.) */
+  body {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Remove tap highlights and callouts for native feel */
+  * {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    user-select: none;
+  }
+
+  /* Allow text selection for inputs and content */
+  input,
+  textarea,
+  p,
+  span,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    user-select: text;
+    -webkit-user-select: text;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Tighter mobile spacing */
+  main {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    padding-bottom: 24px !important;
+  }
+
+  /* Larger touch targets (iOS HIG: 44x44pt minimum) */
+  button,
+  a,
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* App-like card interactions */
+  .glass-morphism {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-morphism:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+  }
+
+  /* Reduce motion for better performance */
+  * {
+    animation-duration: 0.3s !important;
+    transition-duration: 0.2s !important;
+  }
+
+  /* Hide desktop-only elements */
+  .scroll-to-top {
+    display: none !important;
+  }
+
+  /* Mobile-optimized text sizes */
+  h1 {
+    font-size: 2rem !important;
+  }
+
+  h2 {
+    font-size: 1.75rem !important;
+  }
+
+  h3 {
+    font-size: 1.5rem !important;
+  }
+
+  /* Better mobile padding for sections */
+  section {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  /* Mobile-friendly border radius */
+  .rounded-\[4rem\],
+  .rounded-\[3rem\] {
+    border-radius: 1.5rem !important;
+  }
+}
+
+/* Status bar safe area for sticky elements */
+@supports (padding: max(0px)) {
+  @media (max-width: 768px) {
+
+    header,
+    nav:first-of-type {
+      padding-top: max(16px, env(safe-area-inset-top));
+    }
+  }
+}
+
+/* PWA-style full viewport */
+@media (max-width: 768px) and (display-mode: standalone) {
+  body {
+    background-attachment: scroll;
+    /* Better performance in PWA */
+  }
+}
