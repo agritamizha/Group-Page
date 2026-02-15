@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import logoImg from './assets/logo.png';
 import bannerImg from './assets/banner.jpg';
@@ -9,12 +9,39 @@ import iconImg from './assets/icon.jpg';
  * Premium dark mode with glassmorphism, bento grid, and holographic effects
  */
 
+const FloatingIcon = ({ item }: { item: any }) => {
+  return (
+    <motion.div
+      className="absolute text-6xl"
+      style={{
+        top: item.top,
+        left: item.left
+      }}
+      animate={{
+        y: [0, -30, 0],
+        rotate: [0, 10, -10, 0],
+        opacity: [0.1, 0.3, 0.1]
+      }}
+      transition={{
+        duration: item.duration,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }}
+    >
+      {item.icon}
+    </motion.div>
+  );
+};
+
 const App: React.FC = () => {
   const whatsappUrl = "https://chat.whatsapp.com/HvBFi18JsTE3EeW18kmQjy";
   const qrCodeImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(whatsappUrl)}&margin=10`;
 
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+
   const [showScrollTop, setShowScrollTop] = useState(false);
+
+
 
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -24,17 +51,17 @@ const App: React.FC = () => {
   });
 
   const heroY = useTransform(scrollYProgress, [0, 0.5], ['0%', '30%']);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.3, 0.5], [1, 0.7, 0]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.5, 0.5], [1, 0.7, 0]);
 
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePos({
-        x: (e.clientX / window.innerWidth - 0.5) * 40,
-        y: (e.clientY / window.innerHeight - 0.5) * 40,
-      });
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+  const backgroundIcons = useMemo(() => {
+    return [...Array(6)].map((_, i) => ({
+      icon: ['🍃', '🌾', '🌿', '💧', '🍂', '🌱'][i],
+      top: `${Math.random() * 100}%`,
+      left: `${Math.random() * 100}%`,
+      duration: 3 + i,
+      xRange: [(i + 1) * -30, (i + 1) * 30],
+      yRange: [(i + 1) * -30, (i + 1) * 30]
+    }));
   }, []);
 
   useEffect(() => {
@@ -136,27 +163,11 @@ const App: React.FC = () => {
 
       {/* Floating Background Elements */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-30">
-        {[...Array(6)].map((_, i) => (
-          <motion.div
+        {backgroundIcons.map((item, i) => (
+          <FloatingIcon
             key={i}
-            className="absolute text-6xl"
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`
-            }}
-            animate={{
-              y: [0, -30, 0],
-              rotate: [0, 10, -10, 0],
-              opacity: [0.1, 0.3, 0.1]
-            }}
-            transition={{
-              duration: 5 + i,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          >
-            {['🍃', '🌾', '🌿', '💧', '🍂', '🌱'][i]}
-          </motion.div>
+            item={item}
+          />
         ))}
       </div>
 
@@ -192,7 +203,7 @@ const App: React.FC = () => {
             whileTap={{ scale: 0.95 }}
             className="relative overflow-hidden bg-gradient-to-r from-emerald-400 to-emerald-500 text-emerald-950 px-6 py-3 rounded-xl text-sm font-black shadow-xl glow-green"
           >
-            <span className="relative z-10">🚀 Join Group</span>
+            <span className="relative z-10">Join Group</span>
           </motion.a>
         </div>
       </nav>
@@ -232,18 +243,14 @@ const App: React.FC = () => {
             initial={{ y: 60, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-tight pb-2"
+            className="text-5xl md:text-6xl lg:text-7xl font-black mb-8 leading-snug break-words"
           >
             <span className="block text-white/90 mb-4">விவசாயத்தின்</span>
             <motion.span
-              animate={{
-                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
-              }}
+              animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
               transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-              className="inline-block whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-emerald-500 to-amber-400 bg-[length:200%_auto]"
-              style={{
-                textShadow: "0 0 40px rgba(16, 185, 129, 0.3)"
-              }}
+              className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-emerald-500 to-amber-400 bg-[length:200%_auto]"
+              style={{ textShadow: "0 0 40px rgba(16, 185, 129, 0.3)" }}
             >
               நவீன தோழன்
             </motion.span>
@@ -262,7 +269,7 @@ const App: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.8 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
             <motion.a
               href={whatsappUrl}
@@ -334,7 +341,7 @@ const App: React.FC = () => {
 
               <div className="text-emerald-100/90 text-lg space-y-6 leading-relaxed">
                 <motion.p variants={itemFadeUp}>
-                  Social Media-வில் விவசாயத்திற்காக உழைக்கும் பலர் இருக்கின்றார்கள். — <span className="neon-text-gold font-black">அவர்களை பார்த்தபோது ஒரு உண்மை புரிந்தது — நாம் தனியாக இல்லை.</span> அறிவு இருக்கின்றது. அனுபவம் இருக்கின்றது. முயற்சி இருக்கின்றது.ஆனா எல்லோரும் தனித்தனியாக செயல்படுகின்றோம்
+                  Social Media-வில் விவசாயத்திற்காக உழைக்கும் பலர் இருக்கின்றார்கள். — <span className="neon-text-gold font-black">அவர்களை பார்த்தபோது ஒரு உண்மை புரிந்தது — நாம் தனியாக இல்லை.</span> அறிவு இருக்கின்றது. அனுபவம் இருக்கின்றது. முயற்சி இருக்கின்றது.ஆனால் எல்லோரும் தனித்தனியாக செயல்படுகின்றோம்
                 </motion.p>
 
                 <motion.div
@@ -397,7 +404,7 @@ const App: React.FC = () => {
                 </div>
                 <div className="p-10 md:p-12 flex flex-col justify-center">
                   <div className="text-6xl mb-6">🌐</div>
-                  <h4 className="text-4xl font-black text-white mb-4">தகவல் ஒருங்கிணைப்பு</h4>
+                  <h4 className="text-3xl md:text-4xl font-black text-white mb-4">தகவல் ஒருங்கிணைப்பு</h4>
                   <p className="text-emerald-100/80 text-lg leading-relaxed mb-6">
                     சரியான தகவல்களை மக்களிடம் கொண்டு செல்லுதல். விவசாயிகளுக்கு தேவையான அனைத்து தகவல்களும் ஒரே இடத்தில்.
                   </p>
@@ -537,7 +544,7 @@ const App: React.FC = () => {
                   The exclusive digital home for <span className="neon-text-green font-bold">Sri Lankan</span> agricultural innovators
                 </motion.p>
 
-                <div className="flex flex-col sm:flex-row gap-4">
+                <div className="flex flex-col sm:flex-row gap-4 items-center sm:items-stretch">
                   <motion.a
                     variants={scaleIn}
                     whileHover={{ scale: 1.05, y: -3 }}
