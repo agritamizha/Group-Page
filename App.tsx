@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
+import logoImg from './assets/logo.png';
+import bannerImg from './assets/banner.jpg';
+import iconImg from './assets/icon.jpg';
 
 /**
  * Agri Tamizha - Modern Organic Tech Design
@@ -172,7 +175,7 @@ const App: React.FC = () => {
               whileTap={{ scale: 0.95 }}
               className="bg-gradient-to-br from-emerald-400 to-emerald-600 p-2.5 rounded-2xl shadow-lg glow-green"
             >
-              <img src="/logo/logo.png" alt="Logo" className="w-10 h-10 object-contain" />
+              <img src={logoImg} alt="Logo" className="w-10 h-10 object-contain" />
             </motion.div>
             <h1 className="text-2xl font-black text-white tracking-tight">
               Agri <span className="neon-text-gold">தமிழா</span>
@@ -204,7 +207,7 @@ const App: React.FC = () => {
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{
-              backgroundImage: "url(/logo/banner.jpg)",
+              backgroundImage: `url(${bannerImg})`,
             }}
           />
           <div className="absolute inset-0 dark-gradient-overlay" />
@@ -331,7 +334,7 @@ const App: React.FC = () => {
 
               <div className="text-emerald-100/90 text-lg space-y-6 leading-relaxed">
                 <motion.p variants={itemFadeUp}>
-                  Social Media-வில் விவசாயத்திற்காக உழைக்கும் பலர் இருக்கிறார்கள். — <span className="neon-text-gold font-black">அவர்களை பார்த்தபோது ஒரு உண்மை புரிந்தது — நாம் தனியாக இல்லை.</span> அறிவு இருக்கிறது. அனுபவம் இருக்கிறது. முயற்சி இருக்கிறது.ஆனா எல்லோரும் தனித்தனியா செயல்படுறோம்
+                  Social Media-வில் விவசாயத்திற்காக உழைக்கும் பலர் இருக்கின்றார்கள். — <span className="neon-text-gold font-black">அவர்களை பார்த்தபோது ஒரு உண்மை புரிந்தது — நாம் தனியாக இல்லை.</span> அறிவு இருக்கின்றது. அனுபவம் இருக்கின்றது. முயற்சி இருக்கின்றது.ஆனா எல்லோரும் தனித்தனியாக செயல்படுகின்றோம்
                 </motion.p>
 
                 <motion.div
@@ -509,7 +512,7 @@ const App: React.FC = () => {
               variants={itemFadeUp}
               className="text-5xl md:text-7xl font-black text-center mb-16 relative z-10"
             >
-              Join the <span className="neon-text-gold">Premium</span> <span className="neon-text-green">Network</span>
+              Join the <span className="neon-text-gold">Agri</span> <span className="neon-text-green">Network</span>
             </motion.h3>
 
             <div className="flex flex-col md:flex-row items-center justify-center gap-16 relative z-10">
@@ -523,7 +526,7 @@ const App: React.FC = () => {
 
               <div className="text-center md:text-left space-y-8 max-w-md">
                 <motion.div variants={itemFadeUp} className="flex items-center gap-6 justify-center md:justify-start">
-                  <img src="logo\icon.jpg" alt="Agri" className="w-20 h-20 rounded-2xl object-cover border-4 border-amber-400 shadow-2xl glow-gold" />
+                  <img src={iconImg} alt="Agri" className="w-20 h-20 rounded-2xl object-cover border-4 border-amber-400 shadow-2xl glow-gold" />
                   <div>
                     <h4 className="text-white font-black text-3xl">விவசாயம்</h4>
                     <div className="inline-block neon-text-green text-xs font-black uppercase tracking-wider mt-2 glass-morphism px-4 py-2 rounded-full border border-emerald-400/30">Verified Network</div>
@@ -604,7 +607,7 @@ const App: React.FC = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              <h5 className="neon-text-gold font-black text-sm uppercase tracking-wider mb-6">யாருக்காக?</h5>
+              <h5 className="neon-text-gold font-black text-sm uppercase tracking-wider mb-6">Who Is This For?</h5>
               <ul className="space-y-3 text-base text-emerald-100/80">
                 {['Video Creators', 'Agri Startups', 'Agri Companies', 'Service Providers', 'Trainers / Teachers',].map((item, i) => (
                   <motion.li
@@ -624,14 +627,14 @@ const App: React.FC = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.25 }}
             >
-              <h5 className="neon-text-gold font-black text-sm uppercase tracking-wider mb-6">நோக்கங்கள்</h5>
+              <h5 className="neon-text-gold font-black text-sm uppercase tracking-wider mb-6">Our Objectives</h5>
               <ul className="space-y-3 text-base text-emerald-100/80">
                 {[
-                  { text: 'தகவல் பகிர்வு', icon: '🎯' },
-                  { text: 'வழிகாட்டல்', icon: '🛡️' },
+                  { text: 'Information Sharing', icon: '🎯' },
+                  { text: 'Guidance & Support', icon: '🛡️' },
                   { text: 'Network Building', icon: '🤝' },
                   { text: 'Agri updates', icon: '🎬' },
-                  { text: 'விவசாயிகளுக்கு ஆதரவு', icon: '👨‍🌾' },
+                  { text: 'Farmer Support', icon: '👨‍🌾' },
                 ].map((item, i) => (
                   <motion.li
                     key={i}
@@ -651,7 +654,7 @@ const App: React.FC = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
             >
-              <h5 className="neon-text-gold font-black text-sm uppercase tracking-wider mb-6">தொடர்புக்கு</h5>
+              <h5 className="neon-text-gold font-black text-sm uppercase tracking-wider mb-6">Contact Us</h5>
               <div className="space-y-4">
                 <a href="https://wa.me/94702597012" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 group">
                   <div className="w-11 h-11 rounded-xl glass-morphism glass-morphism-hover flex items-center justify-center text-emerald-400 glow-green-hover border border-emerald-400/20">
