@@ -434,7 +434,7 @@ const App: React.FC = () => {
               </div>
               <div className="p-8">
                 <p className="text-emerald-100/80 text-base leading-relaxed">
-                  புதிய திட்டங்கள் மற்றும் updates பகிர்வு. தினசரி விவசாய குறிப்புகள் மற்றும் வழிகாட்டுதல்கள்.
+                  புதிய திட்டங்கள் மற்றும் தகவல் பகிர்வு. தினசரி விவசாய குறிப்புகள் மற்றும் வழிகாட்டுதல்கள்.
                 </p>
               </div>
             </motion.div>
