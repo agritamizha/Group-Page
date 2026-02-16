@@ -123,7 +123,7 @@ const App: React.FC = () => {
   // Bento Grid Features
   const bentoFeatures = [
     {
-      title: "தகவல் ஒருங்கிணைப்பு",
+      title: "Information Coordination",
       desc: "சரியான தகவல்களை மக்களிடம் கொண்டு செல்லுதல்",
       icon: "🌐",
       size: "col-span-2 row-span-2",
@@ -131,7 +131,7 @@ const App: React.FC = () => {
     },
     {
       title: "Updates",
-      desc: "புதிய திட்டங்கள் மற்றும் updates பகிர்வு",
+      desc: "புதிய திட்டங்கள் மற்றும் தகவல் பகிர்வு",
       icon: "📈",
       size: "col-span-1 row-span-1",
       gradient: "from-amber-500/20 to-amber-600/10"
@@ -404,7 +404,7 @@ const App: React.FC = () => {
                 </div>
                 <div className="p-10 md:p-12 flex flex-col justify-center">
                   <div className="text-6xl mb-6">🌐</div>
-                  <h4 className="text-3xl md:text-4xl font-black text-white mb-4">தகவல் ஒருங்கிணைப்பு</h4>
+                  <h4 className="text-3xl md:text-4xl font-black text-white mb-4">Information Coordination</h4>
                   <p className="text-emerald-100/80 text-lg leading-relaxed mb-6">
                     சரியான தகவல்களை மக்களிடம் கொண்டு செல்லுதல். விவசாயிகளுக்கு தேவையான அனைத்து தகவல்களும் ஒரே இடத்தில்.
                   </p>
